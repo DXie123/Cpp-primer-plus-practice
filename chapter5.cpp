@@ -101,8 +101,141 @@ void p5(void)
     
     cout << "The sales of this year is " << sum << endl;
 }
+
+void p6(void)
+{
+    using namespace std;
+
+    string month[12] = {
+        "January",
+        "Febuary",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    };
+    int sale [3][12] = {0};
+    int sum [3] = {0};    
+    int total = 0;
+
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 12; j++)
+        {
+            cout << "Enter the sales of " << month[j] << ':';
+            cin >> sale [i][j];
+            sum [i] += sale[i][j];
+        }
+        total += sum[i];
+    }
+
+    for (size_t i = 0; i < 3; i++)
+    {
+        cout << "The sales of year " << i << " is " << sum[i] <<endl;
+    }
+    cout << "Total sales are " << total << endl;
+}
+
+struct car
+{
+    std::string name;
+    int year;
+};
+
+void p7(void)
+{
+    using namespace std;
+
+    int number;
+    cout << "How many cars do you wish to catalog? ";
+    cin >> number; // cin will keep \n when reading a number
+    cin.get(); // (cin >> number).get() is also okay
+    car* p1 = new car[3];
+
+    for (int i = 0; i < number; i++)
+    {
+        cout << "Car #" << i+1 << ":\n";
+        cout << "Please enter the make: ";
+        getline(cin,(p1+i)->name);
+        cout << "Please enter the year made: ";
+        cin >> (p1+i)->year;
+        cin.get();
+    }
+
+    for (int i = 0; i < number; i++)
+    {
+        cout << (p1+i)->year << ' ' << (p1+i)->name << endl;
+    }
+}
+
+void p8(void)
+{
+    using namespace std;
+
+    int count = 0;
+    char word[20];
+
+    cout << "Enter words (to stop, type word done) :\n";
+    cin >> word;
+    while (strcmp(word,"done") != 0)
+    {
+        cin >> word;
+        count++;
+    }
+
+    cout << "You entered a total of " << count << " words.\n";
+}
+
+void p9(void)
+{
+    using namespace std;
+
+    int count = 0;
+    string word;
+
+    cout << "Enter words (to stop, type word done) :\n";
+    cin >> word;
+    while (word != "done")
+    {
+        cin >> word;
+        count++;
+    }
+
+    cout << "You entered a total of " << count << " words.\n";
+}
+
+void p10(void)
+{
+    using namespace std;
+
+    int row = 0;
+    char dot, star;
+    dot = '.'; star = '*';
+
+    cout << "Enter number of rows: ";
+    cin >> row;
+    for (int i = 1; i <= row; i++)
+    {
+        for (int j = row; j > i; j--)
+        {
+            cout << dot;
+        }
+        for (int j = 0; j < i; j++)
+        {
+            cout << star;
+        }
+        cout << endl;
+    }
+}
+
 int main(int argc, char const *argv[])
 {
-    p5();
+    p10();
     return 0;
 }
